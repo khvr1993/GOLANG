@@ -23,22 +23,23 @@ func lengthOfLongestSubstring(s string) int {
 	//var iterator int
 	//Convert string to array
 	//var windowSize int
-	var i, j int
-	var mapArray = make(map[string]int)
-	for i < len(s) {
+	var i, j int32
+	length := int32(len(s))
+	var mapArray = make(map[byte]int32)
+	for i < length {
 		maxLength := 0
 		fmt.Println("Current value of i => ", i)
-		for j < len(s) {
+		for j < length {
 			fmt.Println("Current value of j => ", j, string(s[j]))
-			_, exist := mapArray[string(s[j])]
+			_, exist := mapArray[s[j]]
 			fmt.Println("The value ", string(s[j]), " in map ", mapArray, " is ", exist)
 			if !exist {
-				mapArray[string(s[j])] = j
+				mapArray[s[j]] = j
 				maxLength = len(mapArray)
 				output = max(output, maxLength)
 				j++
 			} else {
-				delete(mapArray, string(s[i]))
+				delete(mapArray, s[i])
 				fmt.Println("Deleting value of i => and output is ", string(s[i]), output)
 				break
 			}
