@@ -18,38 +18,52 @@ func main() {
 }
 func lengthOfLongestSubstring(s string) int {
 	var output int
+
+	// var windowStart int
 	//var iterator int
 	//Convert string to array
-	res1 := strings.Split(s, "")
-	arrayLen := len(res1)
-
-	for indx := 0; indx < arrayLen; indx++ {
-		fmt.Printf("Working on value %d\n", indx)
-		var elementsMap = map[string]int{}
-		var maxLength int
-		for j := indx; j < arrayLen; j++ {
-			_, exist := elementsMap[res1[j]]
-			fmt.Println(elementsMap)
-			fmt.Println(exist)
+	//var windowSize int
+	var i, j int
+	var mapArray = make(map[string]int)
+	for i < len(s) {
+		maxLength := 0
+		fmt.Println("Current value of i => ", i)
+		for j < len(s) {
+			fmt.Println("Current value of j => ", j, string(s[j]))
+			_, exist := mapArray[string(s[j])]
+			fmt.Println("The value ", string(s[j]), " in map ", mapArray, " is ", exist)
 			if !exist {
-				maxLength = maxLength + 1
-				if output < maxLength {
-					output = maxLength
-				}
+				mapArray[string(s[j])] = j
+				maxLength = len(mapArray)
+				output = max(output, maxLength)
+				j++
 			} else {
+				delete(mapArray, string(s[i]))
+				fmt.Println("Deleting value of i => and output is ", string(s[i]), output)
 				break
 			}
-			elementsMap[res1[j]] = j
 		}
-		if maxLength == arrayLen {
-			return maxLength
-		}
-		if maxLength > arrayLen-indx {
-			fmt.Printf("Current Output is %d at Indx %d \n", output, indx)
-			return output
-
-		}
-		fmt.Printf("max Length after indx %d is %d and output is %d\n", indx, maxLength, output)
+		/* j = i
+			maxLength := 0
+			for _, exist := mapArray[string(s[j])]; !exist && j < len(s); {
+				fmt.Println("Adding to ARRAY for j ", j, string(s[j]))
+				mapArray[string(s[j])] = j
+				maxLength++
+				output = max(output, maxLength)
+				j++
+			}
+			fmt.Println(mapArray, output)
+			i++
+		} */
+		i++
 	}
 	return output
+
+}
+
+func max(a int, b int) int {
+	if a > b {
+		return a
+	}
+	return b
 }
