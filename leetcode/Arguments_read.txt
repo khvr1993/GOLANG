@@ -1,0 +1,10 @@
+func main() {
+	stringPassed := os.Args[1:]
+	var outputLength int
+	fmt.Println(stringPassed)
+	res1 := strings.Split(stringPassed[0], "")
+	fmt.Println(res1)
+
+	outputLength = lengthOfLongestSubstring(stringPassed[0])
+	fmt.Println(outputLength)
+}

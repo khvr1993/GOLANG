@@ -1,15 +1,12 @@
-func main() {
-	stringPassed := os.Args[1:]
-	var outputLength int
-	fmt.Println(stringPassed)
-	res1 := strings.Split(stringPassed[0], "")
-	fmt.Println(res1)
+package main
 
-	outputLength = lengthOfLongestSubstring(stringPassed[0])
-	fmt.Println(outputLength)
-}
+import (
+	"fmt"
+	"os"
+	"strconv"
+	"strings"
+)
 
-/*Array Input converted to Number*/
 func main() {
 	stringPassed := os.Args[1:]
 	noOfValToChange, _ := strconv.Atoi(os.Args[2])
@@ -25,4 +22,21 @@ func main() {
 	}
 	output = longestOnes(res2, noOfValToChange)
 	fmt.Println(output)
+}
+
+func longestOnes(A []int, K int) int {
+	var windowStart, windowEnd int
+	for windowEnd < len(A) {
+		if A[windowEnd] == 0 {
+			K--
+		}
+		if K < 0 {
+			if A[windowStart] == 0 {
+				K++
+			}
+			windowStart++
+		}
+		windowEnd++
+	}
+	return windowEnd - windowStart
 }

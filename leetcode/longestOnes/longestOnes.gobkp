@@ -1,0 +1,61 @@
+package main
+
+import (
+	"fmt"
+	"os"
+	"strconv"
+	"strings"
+)
+
+func main() {
+	stringPassed := os.Args[1:]
+	noOfValToChange, _ := strconv.Atoi(os.Args[2])
+	var output int
+	var res2 []int
+	fmt.Println(stringPassed)
+	res1 := strings.Split(stringPassed[0], ",")
+	fmt.Println(res1)
+	fmt.Println(noOfValToChange)
+	for i := 0; i < len(res1); i++ {
+		val, _ := strconv.Atoi(res1[i])
+		res2 = append(res2, val)
+	}
+	output = longestOnes(res2, noOfValToChange)
+	fmt.Println(output)
+}
+
+func longestOnes(A []int, K int) int {
+	var longestOne int
+	var j int
+	var maxLength int
+	fmt.Println(len(A))
+	for i := 0; i < len(A); i++ {
+		fmt.Println("Running for i => ", i, " and Array val ", A[i])
+		for j < len(A) {
+			if K <= 0 && A[j] == 0 {
+				break
+			}
+			if A[j] == 0 {
+				fmt.Println("Found zero at  ", j, " and K value is ", K)
+				K--
+			}
+			maxLength++
+			longestOne = max(longestOne, maxLength)
+			fmt.Println("The Longest array at this point is => ", longestOne, " and the index value is ", j)
+			j++
+
+		}
+		if A[i] == 0 {
+			K++
+		}
+		maxLength--
+	}
+	return longestOne
+}
+
+func max(a int, b int) int {
+	if a > b {
+		return a
+	}
+	return b
+}
