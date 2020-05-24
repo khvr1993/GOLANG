@@ -36,7 +36,6 @@ func longestPalindrome(s string) string {
 			windowStart++
 			windowEnd++
 		}
-		log.Println("Decrement. the window size is ", windowSize)
 		windowSize--
 	}
 
