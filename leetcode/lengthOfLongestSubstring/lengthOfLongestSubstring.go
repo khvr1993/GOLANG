@@ -1,7 +1,7 @@
 package main
 
 import (
-	"fmt"
+	"log"
 	"os"
 	"strings"
 )
@@ -9,12 +9,12 @@ import (
 func main() {
 	stringPassed := os.Args[1:]
 	var outputLength int
-	fmt.Println(stringPassed)
+	log.Println(stringPassed)
 	res1 := strings.Split(stringPassed[0], "")
-	fmt.Println(res1)
+	log.Println(res1)
 
 	outputLength = lengthOfLongestSubstring(stringPassed[0])
-	fmt.Println(outputLength)
+	log.Println(outputLength)
 }
 func lengthOfLongestSubstring(s string) int {
 	var output int
@@ -28,11 +28,11 @@ func lengthOfLongestSubstring(s string) int {
 	var mapArray = make(map[byte]int32)
 	for i < length {
 		maxLength := 0
-		fmt.Println("Current value of i => ", i)
+		log.Println("Current value of i => ", i)
 		for j < length {
-			fmt.Println("Current value of j => ", j, string(s[j]))
+			log.Println("Current value of j => ", j, string(s[j]))
 			_, exist := mapArray[s[j]]
-			fmt.Println("The value ", string(s[j]), " in map ", mapArray, " is ", exist)
+			log.Println("The value ", string(s[j]), " in map ", mapArray, " is ", exist)
 			if !exist {
 				mapArray[s[j]] = j
 				maxLength = len(mapArray)
@@ -40,7 +40,7 @@ func lengthOfLongestSubstring(s string) int {
 				j++
 			} else {
 				delete(mapArray, s[i])
-				fmt.Println("Deleting value of i => and output is ", string(s[i]), output)
+				log.Println("Deleting value of i => and output is ", string(s[i]), output)
 				break
 			}
 		}
