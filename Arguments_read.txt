@@ -1,13 +1,14 @@
 func main() {
-	stringPassed := os.Args[1:]
+	stringPassed := os.Args[1:] --Array
 	var outputLength int
 	fmt.Println(stringPassed)
-	res1 := strings.Split(stringPassed[0], "")
+	res1 := strings.Split(stringPassed[0], "") --Array
 	fmt.Println(res1)
-
+	noOfValToChange, _ := strconv.Atoi(os.Args[2]) --string
 	outputLength = lengthOfLongestSubstring(stringPassed[0])
 	fmt.Println(outputLength)
 }
+-------------------------------------------------------------------
 
 /*Array Input converted to Number*/
 func main() {
