@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"fmt"
 	"io"
+	"log"
 	"os"
 	"strconv"
 	"strings"
@@ -12,6 +13,23 @@ import (
 // Complete the circularArrayRotation function below.
 func circularArrayRotation(a []int32, k int32, queries []int32) []int32 {
 	var opArray []int32
+	length := int32(len(a))
+	var indx, i int32
+	//k rotations
+	log.Println("Provided Array => ", a)
+	for indx < k {
+		tempVal := a[length-1]
+		a = a[0 : length-1]
+		a = append([]int32{tempVal}, a...)
+		log.Println("newArray => ", a)
+		indx++
+	}
+	log.Println("queries ", queries)
+	for i < int32(len(queries)) {
+		opArray = append(opArray, a[queries[i]])
+		i++
+	}
+	log.Println("opArray ", opArray)
 	return opArray
 }
 
