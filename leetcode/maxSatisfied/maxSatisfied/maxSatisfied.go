@@ -9,26 +9,29 @@ func MaxSatisfied(customers []int, grumpy []int, X int) int {
 	var custCount int
 	var maxCust int
 	log.Println("The number of Customers => ", length)
+	satisfiedCust := sumSatisfiedCust(&customers, &grumpy, &length)
 	for end < length {
 		log.Println("Current value of endWindow ", end, " startWindow ", start, " value of X ", X)
 		if X > 0 {
-			if grumpy[end] != 0 {
-				X--
+			X--
+			if grumpy[end] == 1 {
+				custCount += customers[end]
 			}
-			custCount += customers[end]
+
 			maxCust = max(maxCust, custCount)
 			log.Println("The max customers at this point in time => ", maxCust, " custCount is => ", custCount)
 			end++
 		} else {
-			if grumpy[start] != 0 {
-				X++
-			}
+			X++
 			log.Println("deleting the customer count ", customers[start], " at ", start)
-			custCount -= customers[start]
+			if grumpy[start] == 1 {
+				custCount -= customers[start]
+			}
 			start++
 		}
 	}
-	return maxCust
+
+	return maxCust + satisfiedCust
 
 }
 
@@ -37,4 +40,15 @@ func max(a int, b int) int {
 		return a
 	}
 	return b
+}
+
+func sumSatisfiedCust(cust *[]int, grump *[]int, len *int) int {
+	var i, sum int
+	for i < *len {
+		if (*grump)[i] == 0 {
+			sum += (*cust)[i]
+		}
+		i++
+	}
+	return sum
 }
