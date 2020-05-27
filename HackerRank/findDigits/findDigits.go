@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"fmt"
 	"io"
+	"log"
 	"os"
 	"strconv"
 	"strings"
@@ -11,7 +12,22 @@ import (
 
 // Complete the findDigits function below.
 func findDigits(n int32) int32 {
+	x := n
 
+	var count, d int32
+	for x > 0 {
+		d = x % 10
+		log.Println("The present divisor ", d)
+		x /= 10
+		log.Println("x Transformed to ", x)
+		if d > 0 {
+			if n%d == 0 {
+				count++
+			}
+		}
+	}
+	log.Println("Count is ", count)
+	return count
 }
 
 func main() {
