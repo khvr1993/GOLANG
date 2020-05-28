@@ -4,6 +4,8 @@ import (
 	"bufio"
 	"fmt"
 	"io"
+	"log"
+	"math"
 	"os"
 	"strconv"
 	"strings"
@@ -11,7 +13,27 @@ import (
 
 // Complete the squares function below.
 func squares(a int32, b int32) int32 {
+	var count, val int32
+	// First find the Sqrt of a
+	// floor the value and this becomes the starting Point
+	// increment the starting point and get the sqrts
+	//Once the new sqrt value is greater exit the loop
+	startingPoint := math.Floor(math.Sqrt(float64(a - 1)))
+	startingPoint++
+	val = int32(math.Pow(startingPoint, 2))
+	for val <= b && val >= a {
+		log.Println("Computing square for ", startingPoint)
+		val = int32(math.Pow(startingPoint, 2))
 
+		if val <= b {
+			count++
+		} else {
+			break
+		}
+		startingPoint++
+	}
+	log.Println("count ", count)
+	return count
 }
 
 func main() {
