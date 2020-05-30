@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"fmt"
 	"io"
+	"log"
 	"os"
 	"strconv"
 	"strings"
@@ -19,8 +20,51 @@ import (
  */
 
 func nonDivisibleSubset(k int32, s []int32) int32 {
-	// Write your code here
+	// Calculate the remainders and create a map with remainder as Key and count as value
+	// increment the count when remainder is encountered.
+	var i, j, maxSum int32
+	j = 1
+	var remainders = make(map[int32]int32)
+	//var keys []int
+	for i < int32(len(s)) {
+		rem := s[i] % k
+		_, ok := remainders[rem]
+		if ok {
+			remainders[rem]++
+		} else {
+			remainders[rem] = 1
+		}
+		i++
+	}
 
+	log.Println("Remainder List ", remainders, len(remainders))
+
+	for key := range remainders {
+		if key == 0 {
+			maxSum++
+		} else if 2*key%k == 0 {
+			maxSum++
+		}
+	}
+
+	for j <= k/2 {
+		log.Println("k/2 => ", k/2)
+		if 2*j%k != 0 {
+			maxSum += max(remainders[j], remainders[k-j])
+		}
+		j++
+	}
+
+	log.Println("maxSum => ", maxSum)
+	return maxSum
+
+}
+
+func max(a int32, b int32) int32 {
+	if a > b {
+		return a
+	}
+	return b
 }
 
 func main() {

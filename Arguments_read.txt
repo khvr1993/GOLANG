@@ -27,3 +27,10 @@ func main() {
 	output = longestOnes(res2, noOfValToChange)
 	fmt.Println(output)
 }
+
+func max(a int, b int) int {
+	if a > b {
+		return a
+	}
+	return b
+}
