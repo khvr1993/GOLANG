@@ -22,6 +22,8 @@ import (
 	"os"
 	"strconv"
 	"strings"
+
+	"github.com/khvr1993/GOLANG/DS_Algorithms/quickFindEagerApproach/quickFindEager"
 )
 
 func main() {
@@ -34,38 +36,59 @@ func main() {
 
 	writer := bufio.NewWriterSize(stdout, 1024*1024)
 
+	//Path Size
 	nTemp, err := strconv.ParseInt(readLine(reader), 10, 64)
 	checkError(err)
-	UFSize := int32(nTemp)
-	log.Println("UF Size", UFSize)
+	UFSize := int(nTemp)
+	var uf *quickFindEager.UF = new(quickFindEager.UF)
+	//Path Size
+	uf.CreatePoints(UFSize)
 
+	//uf.PrintPathTransform()
+
+	//No of Union Paths
 	nTemp, err = strconv.ParseInt(readLine(reader), 10, 64)
 	checkError(err)
-	n := int32(nTemp)
+	n := int(nTemp)
+	//No of Union Paths
 
+	//Union Points
 	for i := 0; i < int(n); i++ {
 		arrTemp := strings.Split(readLine(reader), " ")
 
 		aTemp, err := strconv.ParseInt(arrTemp[0], 10, 64)
 		checkError(err)
 
-		p := int32(aTemp)
+		p := int(aTemp)
 
 		bTemp, err := strconv.ParseInt(arrTemp[1], 10, 64)
 		checkError(err)
-		q := int32(bTemp)
-		log.Println("p => ", p)
-		log.Println("q => ", q)
-
+		q := int(bTemp)
+		uf.Union(p, q)
 	}
+	//Union Points
 
-	result := []int{1, 2, 3}
+	//for connection exists check
+	arrTemp := strings.Split(readLine(reader), " ")
+	aTemp, err := strconv.ParseInt(arrTemp[0], 10, 64)
+	checkError(err)
+
+	p := int(aTemp)
+
+	bTemp, err := strconv.ParseInt(arrTemp[1], 10, 64)
+	checkError(err)
+	q := int(bTemp)
+	//for connection exists Check
+	ok := uf.IsConnected(p, q)
+	log.Println("IsConnected ", ok)
+
+	result := uf.PathCreated()
 
 	for i, resultItem := range result {
 		fmt.Fprintf(writer, "%d", resultItem)
 
 		if i != len(result)-1 {
-			fmt.Fprintf(writer, "\n")
+			fmt.Fprintf(writer, " ")
 		}
 	}
 
