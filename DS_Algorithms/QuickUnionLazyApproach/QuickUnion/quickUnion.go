@@ -22,6 +22,8 @@ func (uf *UF) CreatePoints(n int) *UF {
 
 //Root will return the root value of a given point
 func (uf *UF) Root(point int) int {
+	//First check whether the element is root of itself.
+	//if not then set the point to the root and check if that point is the root
 	for point != uf.slice[point] {
 		point = uf.slice[point]
 	}
