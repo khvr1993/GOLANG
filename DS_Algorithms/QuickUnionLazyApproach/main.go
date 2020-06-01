@@ -23,7 +23,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/khvr1993/GOLANG/DS_Algorithms/quickFindEagerApproach/quickFindEager"
+	"github.com/khvr1993/GOLANG/DS_Algorithms/QuickUnionLazyApproach/QuickUnion"
 )
 
 func main() {
@@ -40,7 +40,7 @@ func main() {
 	nTemp, err := strconv.ParseInt(readLine(reader), 10, 64)
 	checkError(err)
 	UFSize := int(nTemp)
-	var uf *quickFindEager.UF = new(quickFindEager.UF)
+	var uf *QuickUnion.UF = new(QuickUnion.UF)
 	//Path Size
 	uf.CreatePoints(UFSize)
 
