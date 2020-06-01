@@ -38,11 +38,14 @@ func (uf *UF) Union(p int, q int) {
 	// Then assign A[p] = A[q]
 	pRoot := uf.Root(p)
 	qRoot := uf.Root(q)
+	if pRoot == qRoot {
+		return
+	}
 	if uf.size[pRoot] <= uf.size[qRoot] {
-		uf.slice[pRoot] = uf.slice[qRoot] //qRoot will become root node and pRoot will be attached as Child
+		uf.slice[pRoot] = qRoot //qRoot will become root node and pRoot will be attached as Child
 		uf.size[qRoot] += uf.size[pRoot]
 	} else {
-		uf.slice[qRoot] = uf.slice[pRoot] //pRoot will become root node and qRoot will become child
+		uf.slice[qRoot] = pRoot //pRoot will become root node and qRoot will become child
 		uf.size[pRoot] += uf.size[qRoot]
 	}
 
