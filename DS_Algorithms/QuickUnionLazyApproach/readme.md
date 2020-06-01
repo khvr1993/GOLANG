@@ -3,12 +3,12 @@ Take the first item and make it as child to the seconditem
 p is the child to q
 IMP: Always the parent nodes go as values in the array
 eg:
-0 1 2 idx
-1 3 3 val
+0 1 2 3 idx
+1 3 3 3 val
 
 1 is the parent node to 0
 3 is the parent node to 1
-1 is the parent node to 2
+3 is the parent node to 2
 
       3
     2   1
