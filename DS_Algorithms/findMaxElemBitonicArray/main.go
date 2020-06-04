@@ -17,6 +17,8 @@ import (
 	"os"
 	"strconv"
 	"strings"
+
+	"github.com/khvr1993/GOLANG/DS_Algorithms/findMaxElemBitonicArray/findMaxElemBitonicArray"
 )
 
 func main() {
@@ -40,10 +42,10 @@ func main() {
 		arItemTemp, err := strconv.ParseInt(arTemp[arItr], 10, 64)
 		checkError(err)
 		arItem := int(arItemTemp)
-		ar = append(ar, int(arItem))
+		ar = append(ar, arItem)
 	}
 
-	result := 1
+	result := findMaxElemBitonicArray.FindMax(ar)
 
 	fmt.Fprintf(writer, "%d\n", result)
 
