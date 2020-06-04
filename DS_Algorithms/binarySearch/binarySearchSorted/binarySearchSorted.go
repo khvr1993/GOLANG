@@ -1,15 +1,13 @@
-package binarySearch
+package binarySearchSorted
 
 import (
 	"log"
-	"sort"
 )
 
-//BinarySearch searches the given element
-func BinarySearch(a []int, target int) bool {
+//BinarySearch searches the given element and returns the index
+func BinarySearch(a []int, target int) int {
 	low := 0
 	high := len(a) - 1
-	sort.Ints(a)
 	for low <= high {
 		log.Println("high => ", high, "low => ", low)
 		middle := (high + low) / 2
@@ -21,8 +19,8 @@ func BinarySearch(a []int, target int) bool {
 			low = middle + 1
 			middle = (high + low) / 2
 		} else {
-			return true
+			return middle
 		}
 	}
-	return false
+	return -1
 }

@@ -1,15 +1,24 @@
 package main
 
+/*
+First Line - Size of Array
+Second Line the Array
+
+eg :
+6
+1 2 3 4 5 6
+
+*/
+
 import (
 	"bufio"
 	"fmt"
 	"io"
-	"log"
 	"os"
 	"strconv"
 	"strings"
 
-	"github.com/khvr1993/GOLANG/DS_Algorithms/binarySearch/binarySearch"
+	"github.com/khvr1993/GOLANG/DS_Algorithms/searchBitonicArray/searchBitonicArray"
 )
 
 func main() {
@@ -32,15 +41,14 @@ func main() {
 	for arItr := 0; arItr < int(arCount); arItr++ {
 		arItemTemp, err := strconv.ParseInt(arTemp[arItr], 10, 64)
 		checkError(err)
-		arItem := int32(arItemTemp)
-		ar = append(ar, int(arItem))
+		arItem := int(arItemTemp)
+		ar = append(ar, arItem)
 	}
 
-	targetElement, err := strconv.ParseInt(readLine(reader), 10, 64)
+	target, err := strconv.ParseInt(readLine(reader), 10, 64)
 	checkError(err)
-	log.Println("targetElement => ", targetElement)
 
-	result := binarySearch.BinarySearch(ar, int(targetElement))
+	result := searchBitonicArray.FindTarget(ar, int(target))
 
 	fmt.Fprintf(writer, "%v\n", result)
 
