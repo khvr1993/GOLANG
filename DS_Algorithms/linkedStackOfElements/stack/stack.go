@@ -36,14 +36,24 @@ func (S *Stack) Push(val interface{}) {
 
 //Pop returns the latest element pushed
 func (S *Stack) Pop() interface{} {
+	if S.top == nil {
+		return nil
+	}
 	topVal := S.top.value
-	S.top = S.top.next
+	if S.top.next != nil {
+		S.top = S.top.next
+	} else {
+		S.top = nil
+	}
 	S.size--
 	return topVal
 }
 
 //ShowStack Prints the elements present in the stack
 func (S *Stack) ShowStack() {
+	if S.top == nil {
+		return
+	}
 	currentNode := S.top
 	for currentNode.next != nil {
 		fmt.Printf("%v\t", currentNode.value)
@@ -51,6 +61,7 @@ func (S *Stack) ShowStack() {
 	}
 	fmt.Printf("%v\t", currentNode.value)
 	fmt.Printf("\n")
+	return
 }
 
 //Size returns the size of the stack
