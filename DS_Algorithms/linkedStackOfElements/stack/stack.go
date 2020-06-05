@@ -46,10 +46,10 @@ func (S *Stack) Pop() interface{} {
 func (S *Stack) ShowStack() {
 	currentNode := S.top
 	for currentNode.next != nil {
-		fmt.Printf("%v ", currentNode.value)
+		fmt.Printf("%v\t", currentNode.value)
 		currentNode = currentNode.next
 	}
-	fmt.Printf("%v ", currentNode.value)
+	fmt.Printf("%v\t", currentNode.value)
 	fmt.Printf("\n")
 }
 
