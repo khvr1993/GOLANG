@@ -24,6 +24,8 @@ func (S *Stack) Push(val string) {
 	if S.top == nil {
 		S.top = node
 	} else {
+		//Assign the current element to value and the top element to the next
+		//Then point the top to the node
 		node := &Node{
 			value: val,
 			next:  S.top}
