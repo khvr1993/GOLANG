@@ -6,7 +6,7 @@ import (
 
 //Node contains value and the pointer to the next Element
 type Node struct {
-	value string
+	value interface{}
 	next  *Node
 }
 
@@ -17,7 +17,7 @@ type Stack struct {
 }
 
 //Push inserts the value at the top
-func (S *Stack) Push(val string) {
+func (S *Stack) Push(val interface{}) {
 	node := &Node{
 		value: val}
 
@@ -35,7 +35,7 @@ func (S *Stack) Push(val string) {
 }
 
 //Pop returns the latest element pushed
-func (S *Stack) Pop() string {
+func (S *Stack) Pop() interface{} {
 	topVal := S.top.value
 	S.top = S.top.next
 	S.size--
@@ -46,10 +46,10 @@ func (S *Stack) Pop() string {
 func (S *Stack) ShowStack() {
 	currentNode := S.top
 	for currentNode.next != nil {
-		fmt.Printf(currentNode.value + " ")
+		fmt.Printf("%v ", currentNode.value)
 		currentNode = currentNode.next
 	}
-	fmt.Printf(currentNode.value + " ")
+	fmt.Printf("%v ", currentNode.value)
 	fmt.Printf("\n")
 }
 
