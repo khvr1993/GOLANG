@@ -28,9 +28,9 @@ func (L *List) AddMem(value int) error {
 		// if the head is already present we traverse through the list and come to a
 		// point where the node is nil
 		currentNode := L.tail
-		for currentNode.next != nil {
-			currentNode = currentNode.next
-		}
+		// for currentNode.next != nil {
+		// 	currentNode = currentNode.next
+		// }
 		currentNode.next = node
 		//After reaching the end we add the node
 	}
