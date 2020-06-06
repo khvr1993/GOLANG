@@ -22,4 +22,12 @@ func main() {
 	log.Println("Popped Element ", val)
 	log.Println("Size of the Stack after Pop ", s.Size())
 	s.ShowStack()
+	s.PointToHead()
+	for {
+		val, err := s.NextItem()
+		log.Println("val => ", val)
+		if err != nil {
+			break
+		}
+	}
 }

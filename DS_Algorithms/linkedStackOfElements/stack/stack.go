@@ -1,6 +1,7 @@
 package stack
 
 import (
+	"errors"
 	"fmt"
 )
 
@@ -12,8 +13,9 @@ type Node struct {
 
 //Stack is the implementation of stack through linked list
 type Stack struct {
-	top  *Node
-	size int
+	top      *Node
+	size     int
+	iterator *Node
 }
 
 //Push inserts the value at the top
@@ -67,4 +69,29 @@ func (S *Stack) ShowStack() {
 //Size returns the size of the stack
 func (S *Stack) Size() int {
 	return S.size
+}
+
+//PointToHead will point the iterator to Head
+func (S *Stack) PointToHead() {
+	if S.top != nil {
+		S.iterator = S.top
+	}
+}
+
+//NextItem returns the item net to the iterator
+func (S *Stack) NextItem() (interface{}, error) {
+	var returnVal interface{}
+
+	if S.iterator == nil {
+		return nil, errors.New("Set the iterator")
+	}
+	if S.iterator.next == nil {
+		returnVal = S.iterator.value
+		error := errors.New("Reached end of the List")
+		return returnVal, error
+	}
+	returnVal = S.iterator.value
+	S.iterator = S.iterator.next
+
+	return returnVal, nil
 }
