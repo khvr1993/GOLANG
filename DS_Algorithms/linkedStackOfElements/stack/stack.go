@@ -87,7 +87,7 @@ func (S *Stack) NextItem() (interface{}, error) {
 	}
 	if S.iterator.next == nil {
 		returnVal = S.iterator.value
-		error := errors.New("Reached end of the List")
+		error := errors.New("END")
 		return returnVal, error
 	}
 	returnVal = S.iterator.value

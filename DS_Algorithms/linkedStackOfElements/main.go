@@ -26,8 +26,16 @@ func main() {
 	for {
 		val, err := s.NextItem()
 		log.Println("val => ", val)
-		if err != nil {
+		if err != nil && err.Error() == "END" {
 			break
+		} else {
+			checkError(err)
 		}
+	}
+}
+
+func checkError(err error) {
+	if err != nil {
+		panic(err)
 	}
 }
