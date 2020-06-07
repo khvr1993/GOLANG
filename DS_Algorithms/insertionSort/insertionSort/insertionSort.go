@@ -17,15 +17,13 @@ func Sort(a *[]int) {
 			swap(a, j)
 			j--
 		}
+		(*a)[j+1] = key //replace the value in the array where the iteration stopped
 		i++
 	}
 }
 
 func swap(a *[]int, j int) {
-	tempVal := (*a)[j+1]
 	(*a)[j+1] = (*a)[j]
-	(*a)[j] = tempVal
-	j--
 }
 
 //PrintArray Prints the values
