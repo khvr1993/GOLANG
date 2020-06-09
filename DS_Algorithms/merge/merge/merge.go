@@ -1,29 +1,27 @@
 package merge
 
 //Merge merges the elements in the array
-func Merge(a *[]int, lo int, hi int, mid int) {
-	var Copy []int
+func Merge(a *[]int, aux *[]int, lo int, hi int, mid int) {
 	var i, k int
 	j := mid + 1
-	for i <= hi {
-		Copy = append(Copy, (*a)[i])
-		i++
+	for i = lo; i <= hi; i++ {
+		(*aux)[i] = (*a)[i]
 	}
 	i = lo
 	for k = lo; k <= hi; k++ {
 		if j <= hi && i <= mid {
-			if Copy[i] > Copy[j] {
-				(*a)[k] = Copy[j]
+			if (*aux)[i] > (*aux)[j] {
+				(*a)[k] = (*aux)[j]
 				j++
-			} else if Copy[i] <= Copy[j] {
-				(*a)[k] = Copy[i]
+			} else if (*aux)[i] <= (*aux)[j] {
+				(*a)[k] = (*aux)[i]
 				i++
 			}
 		} else if j < hi {
-			(*a)[k] = Copy[j]
+			(*a)[k] = (*aux)[j]
 			j++
 		} else if i <= mid {
-			(*a)[k] = Copy[i]
+			(*a)[k] = (*aux)[i]
 			i++
 		}
 	}

@@ -5,20 +5,21 @@ import (
 )
 
 //Sort sorts the array using merge Sort
-func mergeSort(a []int, lo int, hi int) {
+func mergeSort(a *[]int, aux *[]int, lo int, hi int) {
 	mid := (hi + lo) / 2
 	if lo == hi {
 		return
 	}
 
 	if lo < hi {
-		mergeSort(a, lo, mid)
-		mergeSort(a, mid+1, hi)
-		merge.Merge(&a, lo, hi, mid)
+		mergeSort(a, aux, lo, mid)
+		mergeSort(a, aux, mid+1, hi)
+		merge.Merge(a, aux, lo, hi, mid)
 	}
 }
 
 //Sort implements mergeSort
 func Sort(a []int) {
-	mergeSort(a, 0, len(a)-1)
+	aux := make([]int, len(a))
+	mergeSort(&a, &aux, 0, len(a)-1)
 }
