@@ -13,28 +13,32 @@ func Partition(a *[]int, lo int, high int) int {
 	j := high
 	//(*a)[lo] is the key
 	for {
-		log.Println("the key value is ", (*a)[lo], "i is ", i, " j is ", j)
+		log.Println("the key value is ", (*a)[lo], "i is ", i, " j is ", j, " lo is ", lo, "a[i]", (*a)[i], "high", high)
 		for (*a)[i] < (*a)[lo] {
 			i++
-			if i == j {
+			if i == j || i > high {
 				break
 			}
 		}
 
 		for (*a)[lo] < (*a)[j] {
 			j--
-			if i == j {
+			if i == j || j < lo {
 				break
 			}
 		}
+		log.Println("Before break")
 		if j < i {
+			log.Println("Break")
 			break
 		}
+
 		exchange(a, i, j)
+		PrintType.PrintArray(a)
 	}
-	log.Println("i => ", i, "j => ", j)
+	//log.Println("i => ", i, "j => ", j)
 	exchange(a, lo, j)
-	log.Println("j ", (*a)[j], " lo ", (*a)[lo])
+	//log.Println("j ", (*a)[j], " lo ", (*a)[lo])
 	PrintType.PrintArray(a)
 
 	return j
