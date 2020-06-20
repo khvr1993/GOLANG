@@ -1,8 +1,6 @@
 package partition
 
 import (
-	"log"
-
 	"github.com/khvr1993/GOLANG/DS_Algorithms/PrintType"
 )
 
@@ -13,7 +11,7 @@ func Partition(a *[]int, lo int, high int) int {
 	j := high
 	//(*a)[lo] is the key
 	for {
-		log.Println("the key value is ", (*a)[lo], "i is ", i, " j is ", j, " lo is ", lo, "a[i]", (*a)[i], "high", high)
+		//log.Println("the key value is ", (*a)[lo], "i is ", i, " j is ", j, " lo is ", lo, "a[i]", (*a)[i], "high", high)
 		for (*a)[i] < (*a)[lo] {
 			i++
 			if i == j || i > high {
@@ -27,9 +25,7 @@ func Partition(a *[]int, lo int, high int) int {
 				break
 			}
 		}
-		log.Println("Before break")
 		if j < i {
-			log.Println("Break")
 			break
 		}
 
@@ -45,7 +41,6 @@ func Partition(a *[]int, lo int, high int) int {
 }
 
 func exchange(a *[]int, i int, j int) {
-	log.Println("Exchange ", (*a)[i], " : ", (*a)[j])
 	tempVal := (*a)[i]
 	(*a)[i] = (*a)[j]
 	(*a)[j] = tempVal
