@@ -12,7 +12,7 @@ func Partition(a *[]int, lo int, high int) int {
 	//(*a)[lo] is the key
 	for {
 		//log.Println("the key value is ", (*a)[lo], "i is ", i, " j is ", j, " lo is ", lo, "a[i]", (*a)[i], "high", high)
-		for (*a)[i] < (*a)[lo] {
+		for (*a)[i] <= (*a)[lo] {
 			i++
 			if i == j || i > high {
 				break
