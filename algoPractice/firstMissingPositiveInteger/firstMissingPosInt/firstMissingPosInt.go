@@ -4,6 +4,7 @@ import (
 	"log"
 
 	"github.com/khvr1993/GOLANG/DS_Algorithms/PrintType"
+	"github.com/khvr1993/GOLANG/utils"
 )
 
 var containsOne bool
@@ -31,7 +32,7 @@ func FirstMissingPosInt(a *[]int) int {
 	var i, j int
 	removenoImpactElem(a)
 	for i < len(*a) {
-		k := Abs((*a)[i]) - 1
+		k := utils.Abs((*a)[i]) - 1
 		log.Println("Value of k", k)
 		if (*a)[k] > 0 {
 			(*a)[k] = -1 * (*a)[k]
@@ -51,12 +52,4 @@ func FirstMissingPosInt(a *[]int) int {
 	}
 	PrintType.PrintArray(a)
 	return j + 1
-}
-
-// Abs returns the absolute value of x.
-func Abs(x int) int {
-	if x < 0 {
-		return -x
-	}
-	return x
 }
