@@ -22,6 +22,6 @@ To eliminate the violation
 - Exchange the key in parent with key in larger child
 - repeat till heap is restored
 
-## Delete the maximum
+## Delete/get  the maximum
 - Exchange the root with node at end and then sink it down
 
