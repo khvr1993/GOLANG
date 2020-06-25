@@ -64,6 +64,9 @@ func (PQ *BinaryHeap) swap(i int, j int) {
 
 //GetMax deletes the maximum element
 func (PQ *BinaryHeap) GetMax() int {
+	if PQ.N == 0 {
+		panic("Heap us empty")
+	}
 	maxElem := PQ.Maxpq[1]
 	PQ.swap(1, PQ.N)
 	PQ.Maxpq = PQ.Maxpq[:PQ.N]
