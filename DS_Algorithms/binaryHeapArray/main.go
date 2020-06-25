@@ -14,7 +14,6 @@ func main() {
 	maxPQ.Insert(12)
 	maxPQ.Insert(17)
 	maxPQ.Insert(5)
-	maxPQ.Insert(11)
 	maxPQ.ShowHeap()
 	maxelem := maxPQ.GetMax()
 	log.Println("maxelem => ", maxelem)
