@@ -42,10 +42,34 @@ func (PQ *BinaryHeap) swim(k int) {
 	}
 }
 
+func (PQ *BinaryHeap) sink(k int) {
+	for 2*k <= PQ.N {
+		j := 2 * k
+		if j < PQ.N && PQ.Maxpq[j] < PQ.Maxpq[j+1] {
+			j++
+		}
+		if PQ.Maxpq[j] < PQ.Maxpq[k] {
+			break
+		}
+		PQ.swap(k, j)
+		k = j
+	}
+}
+
 func (PQ *BinaryHeap) swap(i int, j int) {
 	temp := PQ.Maxpq[j]
 	PQ.Maxpq[j] = PQ.Maxpq[i]
 	PQ.Maxpq[i] = temp
+}
+
+//GetMax deletes the maximum element
+func (PQ *BinaryHeap) GetMax() int {
+	maxElem := PQ.Maxpq[1]
+	PQ.swap(1, PQ.N)
+	PQ.Maxpq = PQ.Maxpq[:PQ.N]
+	PQ.N--
+	PQ.sink(1)
+	return maxElem
 }
 
 //ShowHeap prints the heap
