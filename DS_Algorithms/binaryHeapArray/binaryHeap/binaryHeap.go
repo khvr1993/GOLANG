@@ -1,8 +1,11 @@
 package binaryHeap
 
+import "fmt"
+
 //BinaryHeap implements Heap for Priority Queue
 type BinaryHeap struct {
 	Maxpq []int
+	N     int
 }
 
 func (PQ *BinaryHeap) isEmpty() bool {
@@ -20,14 +23,15 @@ func (PQ *BinaryHeap) Size() int {
 
 //Insert inserts into the HEAP and performs swim
 func (PQ *BinaryHeap) Insert(key int) {
-	var lastElem int
 	if PQ.isEmpty() {
-		PQ.Maxpq[1] = key
+		PQ.Maxpq = append(PQ.Maxpq, 0)
+		PQ.Maxpq = append(PQ.Maxpq, key)
+		PQ.N = 1
 	} else {
-		lastElem = len(PQ.Maxpq)
-		PQ.Maxpq[lastElem] = key
+		PQ.N++
+		PQ.Maxpq = append(PQ.Maxpq, key)
 	}
-	PQ.swim(lastElem)
+	PQ.swim(PQ.N)
 }
 
 func (PQ *BinaryHeap) swim(k int) {
@@ -42,4 +46,19 @@ func (PQ *BinaryHeap) swap(i int, j int) {
 	temp := PQ.Maxpq[j]
 	PQ.Maxpq[j] = PQ.Maxpq[i]
 	PQ.Maxpq[i] = temp
+}
+
+//ShowHeap prints the heap
+func (PQ *BinaryHeap) ShowHeap() {
+	i := 1
+	k := 1
+	for i <= PQ.N {
+		fmt.Printf("%d\t\t", PQ.Maxpq[i])
+		if i >= k {
+			k = 2*k + 1
+			fmt.Printf("\n")
+		}
+		i++
+	}
+	fmt.Printf("\n")
 }
