@@ -4,16 +4,17 @@ import (
 	"log"
 
 	"github.com/khvr1993/GOLANG/DS_Algorithms/quickSort/partition"
-	"github.com/khvr1993/GOLANG/DS_Algorithms/shuffle/shuffle"
 )
 
 //QuickSort implements quickSort
 func QuickSort(a *[]int) {
-	shuffle.Shuffle(a)
+	log.Println("QuickSort")
+	// shuffle.Shuffle(a)
 	sort(a, 0, len(*a)-1)
 }
 
 func sort(a *[]int, lo int, high int) {
+	log.Println("sort")
 	if high <= lo {
 		return
 	}

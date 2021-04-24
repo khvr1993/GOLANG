@@ -1,12 +1,15 @@
 package partition
 
 import (
+	"log"
+
 	"github.com/khvr1993/GOLANG/DS_Algorithms/PrintType"
 )
 
-//Partition places all the eleements which are less than key to the ledt side and
+//Partition places all the elements which are less than key to the left side and
 // all the elements which are greater to the right side
 func Partition(a *[]int, lo int, high int) int {
+	log.Println("Partition")
 	i := lo + 1
 	j := high
 	//(*a)[lo] is the key
