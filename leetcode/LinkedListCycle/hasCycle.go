@@ -1,5 +1,8 @@
 package hasCycle
 
+/*
+https://leetcode.com/problems/linked-list-cycle/
+*/
 type ListNode struct {
 	Val  int
 	Next *ListNode
