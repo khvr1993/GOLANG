@@ -52,6 +52,9 @@ func checkPrefixAndSuffix(arr1 []string, arr2 []string) bool {
 		}
 	}
 	fmt.Println("Reverse match Count ", revMatchCount)
+	// Here we check if the second string is both a prefix as well as a suffix and then get the result.
+	// We check the length because there might be some words in arr1 which may not be prefix as well as suffix and
+	// we should think of those sentences as not similar
 	if revMatchCount >= len(arr1) {
 		return true
 	} else if (revMatchCount + itr) == len(arr1) {
