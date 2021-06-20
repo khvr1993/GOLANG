@@ -15,12 +15,12 @@ func Constructor(words []string) WordFilter {
 	return *wordFilter
 }
 
-func (this *WordFilter) F(prefix string, suffix string) int {
+func (f *WordFilter) F(prefix string, suffix string) int {
 	maxIndex := -1
 	searchVal := suffix + string('#') + prefix
-	index := len(this.word) - 1
+	index := len(f.word) - 1
 	for index >= 0 {
-		if strings.Contains(this.word[index]+string('#')+this.word[index], searchVal) {
+		if strings.Contains(f.word[index]+string('#')+f.word[index], searchVal) {
 			maxIndex = index
 			return maxIndex
 		}

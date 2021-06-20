@@ -14,14 +14,15 @@ func Partition(a *[]int, lo int, high int) int {
 	j := high
 	//(*a)[lo] is the key
 	for {
-		//log.Println("the key value is ", (*a)[lo], "i is ", i, " j is ", j, " lo is ", lo, "a[i]", (*a)[i], "high", high)
+		log.Println("the key value is ", (*a)[lo], "i is ", i, " j is ", j, " lo is ", lo, "a[i]", (*a)[i], "high", high)
+		//How many elements are less than the key
 		for (*a)[i] <= (*a)[lo] {
 			i++
 			if i == j || i > high {
 				break
 			}
 		}
-
+		// How many elements are greater than the key
 		for (*a)[lo] < (*a)[j] {
 			j--
 			if i == j || j < lo {
@@ -35,7 +36,7 @@ func Partition(a *[]int, lo int, high int) int {
 		exchange(a, i, j)
 		PrintType.PrintArray(a)
 	}
-	//log.Println("i => ", i, "j => ", j)
+	log.Println("i => ", i, "j => ", j)
 	exchange(a, lo, j)
 	//log.Println("j ", (*a)[j], " lo ", (*a)[lo])
 	PrintType.PrintArray(a)
