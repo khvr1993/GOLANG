@@ -35,7 +35,7 @@ func DecodeMessage(s string) string {
 			decodedString = ""
 		} else if val == "[" {
 			repeatTimes := stack.Pop()
-			log.Println("No of Repeat times ", repeatTimes)
+			//log.Println("No of Repeat times ", repeatTimes)
 			decodedString = repeatString(decodedString, repeatTimes.(string))
 			/*
 				After repeating the current data we have to check if there is any older data present
