@@ -3,8 +3,8 @@ package channels
 import "log"
 
 /*
-Counter will generate numbers so that they can be sent to the routine of squarer
-c acts as send only channel
+	Counter will generate numbers so that they can be sent to the routine of squarer
+	c acts as send only channel
 */
 func counter(c chan<- int) {
 	log.Println("Begin Counter ")
@@ -17,10 +17,10 @@ func counter(c chan<- int) {
 }
 
 /*
-Squarer channel will wait for the counter channel to send a value and after receiving it will get squared
-in will control the sync of squares
-Here in acts as the receive only channel
-out acts as send only channel
+	Squarer channel will wait for the counter channel to send a value and after receiving it will get squared
+	in will control the sync of squares
+	Here in acts as the receive only channel
+	out acts as send only channel
 */
 func squarer(out chan<- int, in <-chan int) {
 	log.Println("Begin squarer")
@@ -32,8 +32,8 @@ func squarer(out chan<- int, in <-chan int) {
 }
 
 /*
-As and when squarer channel sends the data printer will print it
-In acts as receive only channel
+	As and when squarer channel sends the data printer will print it
+	In acts as receive only channel
 */
 
 func printer(in <-chan int) {
