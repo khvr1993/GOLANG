@@ -1,1 +1,4 @@
 .DS_Store
+.idea/inspectionProfiles/Project_Default.xml
+.idea/thriftCompiler.xml
+.idea/watcherTasks.xml
