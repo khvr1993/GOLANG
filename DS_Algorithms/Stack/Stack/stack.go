@@ -9,6 +9,7 @@ type Stack interface {
 	ShowStack()
 	Size() int
 	CheckTop(interface{}) bool
+	IsEmpty() bool
 }
 
 //Stack creates a slice with 0 len and 0 capacity
@@ -33,6 +34,9 @@ func (s *interfaceImplStack) Peek() interface{} {
 
 //Pop pops out the value onto the stack
 func (s *interfaceImplStack) Pop() interface{} {
+	if len(s.slice) == 0 {
+		return nil
+	}
 	retVal := s.slice[len(s.slice)-1]
 	s.slice = s.slice[0 : len(s.slice)-1]
 	return retVal
@@ -62,4 +66,13 @@ func (s *interfaceImplStack) CheckTop(val interface{}) bool {
 		return true
 	}
 	return false
+}
+
+//checks if the stack is empty
+func (s *interfaceImplStack) IsEmpty() bool {
+	if len(s.slice) > 0 {
+		return false
+	} else {
+		return true
+	}
 }
