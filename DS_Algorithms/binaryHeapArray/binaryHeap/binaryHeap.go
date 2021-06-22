@@ -3,9 +3,10 @@ package binaryHeap
 import "fmt"
 
 //BinaryHeap implements Heap for Priority Queue
+//The heap implemented here is index 1 based. The first element will always be zero
 type BinaryHeap struct {
 	Maxpq []int
-	N     int
+	N     int `Stores the index of last element of the Binary heap`
 }
 
 func (PQ *BinaryHeap) isEmpty() bool {

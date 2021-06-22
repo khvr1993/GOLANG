@@ -15,7 +15,7 @@ func Abs(x int) int {
 //PrintArray prints the array
 func PrintArray(a *[]int) {
 	var i int
-	for i < len((*a)) {
+	for i < len(*a) {
 		fmt.Printf("%v\t", (*a)[i])
 		i++
 	}
@@ -35,7 +35,7 @@ func PrintArr(a []interface{}) {
 //PrintString prints the array
 func PrintString(a *[]string) {
 	var i int
-	for i < len((*a)) {
+	for i < len(*a) {
 		fmt.Printf("%v\t", (*a)[i])
 		i++
 	}
@@ -44,7 +44,15 @@ func PrintString(a *[]string) {
 
 //Max returns the max of the 2 values
 func Max(a int, b int) int {
-	if a > b {
+	if a >= b {
+		return a
+	}
+	return b
+}
+
+//Min returns the min of 2 values
+func Min(a int, b int) int {
+	if a <= b {
 		return a
 	}
 	return b
