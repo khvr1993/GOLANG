@@ -12,28 +12,28 @@ type Stack interface {
 	IsEmpty() bool
 }
 
-//Stack creates a slice with 0 len and 0 capacity
-type interfaceImplStack struct {
+//InterfaceImplStack creates a slice with 0 len and 0 capacity
+type InterfaceImplStack struct {
 	slice []interface{}
 }
 
-func NewStack() *interfaceImplStack {
-	return &interfaceImplStack{make([]interface{}, 0)}
+func NewStack() *InterfaceImplStack {
+	return &InterfaceImplStack{make([]interface{}, 0)}
 }
 
 //Push pushes the value on the stack
-func (s *interfaceImplStack) Push(val interface{}) {
+func (s *InterfaceImplStack) Push(val interface{}) {
 
 	s.slice = append(s.slice, val)
 }
 
 //Peek returns the latest element on the Stack
-func (s *interfaceImplStack) Peek() interface{} {
+func (s *InterfaceImplStack) Peek() interface{} {
 	return s.slice[len(s.slice)-1]
 }
 
 //Pop pops out the value onto the stack
-func (s *interfaceImplStack) Pop() interface{} {
+func (s *InterfaceImplStack) Pop() interface{} {
 	if len(s.slice) == 0 {
 		return nil
 	}
@@ -43,7 +43,7 @@ func (s *interfaceImplStack) Pop() interface{} {
 }
 
 //ShowStack prints the elements in the stack
-func (s *interfaceImplStack) ShowStack() {
+func (s *InterfaceImplStack) ShowStack() {
 	log.Println("----")
 	i := len(s.slice) - 1
 	for i >= 0 {
@@ -55,12 +55,12 @@ func (s *interfaceImplStack) ShowStack() {
 }
 
 //Size returns the current size of the stack
-func (s *interfaceImplStack) Size() int {
+func (s *InterfaceImplStack) Size() int {
 	return len(s.slice)
 }
 
-//CheckTop matches val to top of interfaceImplStack
-func (s *interfaceImplStack) CheckTop(val interface{}) bool {
+//CheckTop matches val to top of InterfaceImplStack
+func (s *InterfaceImplStack) CheckTop(val interface{}) bool {
 	topVal := s.Peek()
 	if topVal == val {
 		return true
@@ -69,7 +69,7 @@ func (s *interfaceImplStack) CheckTop(val interface{}) bool {
 }
 
 //checks if the stack is empty
-func (s *interfaceImplStack) IsEmpty() bool {
+func (s *InterfaceImplStack) IsEmpty() bool {
 	if len(s.slice) > 0 {
 		return false
 	} else {

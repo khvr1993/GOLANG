@@ -8,25 +8,27 @@ import (
 /*
 	Create a bags for vertices
 */
-type adjStruct struct {
+type Graph struct {
 	AdjVertice []Bag.Bag
+	V          int
 }
 
 /*
 	Constructor to create the adj Vertice
 */
-func NewGraph(V int) *adjStruct {
+func NewGraph(V int) *Graph {
 	log.Println("Begin NewGraph")
-	s := &adjStruct{}
+	s := &Graph{}
 	s.AdjVertice = make([]Bag.Bag, 13)
-	s.Graph(V)
+	s.V = V
+	s.graph(V)
 	return s
 }
 
 /*
 	for a given number of vertices the func initializes the bags and assigns them
 */
-func (s *adjStruct) Graph(V int) {
+func (s *Graph) graph(V int) {
 
 	//For every vertex we create a bag type data and assign it to it
 	for i := 0; i < V; i++ {
@@ -43,24 +45,27 @@ func (s *adjStruct) Graph(V int) {
 	Imagine it as a line with 2 end points and from which ever side you take you
 	should see the other point
 */
-func (s *adjStruct) AddEdge(v int, w int) {
+func (s *Graph) AddEdge(v int, w int) {
 	s.AdjVertice[v].AddItem(w)
 	s.AdjVertice[w].AddItem(v)
 }
 
 /*
-	Returns the bag to iterate over
-*/
-func (s *adjStruct) Iterable(v int) Bag.Bag {
+GetBag Returns the Bag for the requested vertex. This Bag will have all the elements
+that are adjacent to the vertex*/
+func (s *Graph) GetBag(v int) Bag.Bag {
 	return s.AdjVertice[v]
 }
 
-/*
-	Displayes the vertices attached to the given edge
-*/
-func (s *adjStruct) showAdjVertices(v int) {
+//showAdjVertices Displayes the vertices attached to the given edge
+func (s *Graph) showAdjVertices(v int) {
 	bag := s.AdjVertice[v]
 	for k := range bag.Iterable() {
 		log.Println(k)
 	}
+}
+
+//Iterable returns the map of objects that are adjacent to the vertex
+func (s *Graph) Iterable(v int) map[interface{}]int {
+	return s.AdjVertice[v].Iterable()
 }
