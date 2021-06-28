@@ -28,7 +28,7 @@ func NewBreadthFirstPaths(graph graph.Graph, s int) *DepthFirstProcessor {
 	return breadthFirstPaths
 }
 
-// bfs performs breadth first search
+// BreadthFirstPaths performs breadth first search
 func (bfs *BreadthFirstProcessor) BreadthFirstPaths(graph graph.Graph, sourceVertex int) {
 	bfs.bfs(graph, sourceVertex)
 }
