@@ -42,10 +42,10 @@ and visit the adjacent vertices. If the adjacent vertex is already visited then 
 */
 func (dfs *DepthFirstProcessor) dfs(graph graph.Graph, vertex int) {
 	log.Println("Working on vertex ", vertex)
-	///Marking this as true since the vertex is visited
+	// Marking this as true since the vertex is visited
 	dfs.marked[vertex] = true
 
-	//for the adjacent elements of this vertex we need to visit them and mark them as true
+	// for the adjacent elements of this vertex we need to visit them and mark them as true
 	for w := range graph.Iterable(vertex) {
 		log.Println("Checking the vertex ", w)
 		if !dfs.marked[w.(int)] {
@@ -63,8 +63,8 @@ func (dfs *DepthFirstProcessor) HasPathTo(v int) bool {
 	return dfs.marked[v]
 }
 
-//Pathto performs the follwing operations
-//1. First checks if there is a path from source to the given vertex. If No then return Nil
+// Pathto performs the follwing operations
+// 1. First checks if there is a path from source to the given vertex. If No then return Nil
 // If there is a path then keep on adding the edge elements to a stack
 // for vertex x the edge which connects to it is stored in edgeTo[x]
 // first we insert x then check from where did we reach x and from where did we reach to that vertex and so on
