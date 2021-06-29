@@ -190,3 +190,17 @@ func printGivenLevel(root *Node, level int) {
 		printGivenLevel(root.RightNode, level-1)
 	}
 }
+
+// InOrderTraversal prints the tree in ascending order
+// Left Root Right
+func (bst *RedBlackBST) InOrderTraversal() {
+	inorderTraversal(bst.Root)
+}
+
+func inorderTraversal(node *Node) {
+	if node != nil {
+		inorderTraversal(node.LeftNode)
+		fmt.Print(node.Key, " ")
+		inorderTraversal(node.RightNode)
+	}
+}

@@ -23,4 +23,5 @@ func main() {
 	redBlackBST.Put("E", 1)
 	log.Println("++==================++")
 	redBlackBST.LevelOrderTraversal(redBlackBST.Root)
+	redBlackBST.InOrderTraversal()
 }
